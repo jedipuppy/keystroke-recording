@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>sound simulation</title>
+    <meta name="Description" content="" />
+    <meta name="Keywords" content="" />
+
+    <!--jquery-->
+    <script src="assets/jquery/jquery-3.4.1.min.js">
+    </script>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen,print" href="./assets/css/style.css" />
+
+    <!--vue-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <!--sound simulation-->
+    <script type="text/javascript" src="./assets/js/keystroke-recording.js"></script>
+
+    <!--style-->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body class="bg-black">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">sound recording</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        </nav>
+    </header>
+    <main role="main">
+
+
+        <div class="row">
+            <div id="description" class="col-sm-12">
+                <div id="control" class="shadow p-3 m-1 rounded bg-dark">
+                    <p class="text-white">{{ message }}</p>
+                    <button v-on:click="message_next" 　id="button_next" type="button" class="btn btn-secondary w-100">Next</button>
+                </div>
+            </div>
+            <div id="control" class="col-sm-12">
+                <div id="control" class="shadow p-3 m-1 rounded bg-dark">
+                    <div class="row">
+                        <div class="col-sm-12 text-white">
+                            <span id="time">
+          0
+        </span> s
+                        </div>
+                        <div class="col-sm-6">
+                            <div style="height:50px;">
+                                <button　id="startstopButton" type="button" class="btn btn-secondary w-100">
+                                    beep
+                                    </button>
+                            </div>
+                        </div>
+                        <div id="output" class="col-sm-6">
+                            <p><audio id="audio" controls></audio></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+<script>
+    let control = new Vue({
+        el: '#control',
+        data: {
+            message: 'Welcome! You will generate a 5-second auditory signal. It will be played to another participant, together with a computer-generated signal. Your job is to help the participant to judge which signal is from you (human). Now lets practice! '
+        },
+        methods: {
+            message_next: function() {
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    })
+</script>
+
+</html>

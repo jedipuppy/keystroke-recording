@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700&subset=japanese");
+
+.navbar-brand {
+  font-weight: 500;
+  font-size: 1.4em;
+}
+
+/* body要素 */
+body {
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-size: 1em;
+  padding: 20px;
+  padding-top: 80px;
+  margin: 0;
+}
+
+.codingarea .form-control {
+  height: 200px;
+}
+
+.bg-black {
+  background-color: #292b2c;
+}
+
+#waterfall {}
+
+#waterfallGraph {
+  height: 400px;
+  width: 800px;
+
+}
+
+.waveGraphWrapper {
+  position: relative;
+  margin: auto;
+  height: 150px;
+}
+
+.synthGraphWrapper {
+  position: relative;
+  margin: auto;
+  height: 300px;
+}

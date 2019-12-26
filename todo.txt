@@ -1,0 +1,7 @@
+
+Todo
+- measurement time:
+- countdown before start 
+- practice:1 humanlike:1 friendly:1 hostile:1
+- recording again if thedy don't like it
+- description
