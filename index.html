@@ -7,12 +7,8 @@
     <meta name="Description" content="" />
     <meta name="Keywords" content="" />
 
-    <!--jquery-->
-    <script src="assets/jquery/jquery-3.4.1.min.js">
-    </script>
     <!--bootstrap-->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen,print" href="./assets/css/style.css" />
 
     <!--vue-->
@@ -40,27 +36,33 @@
         <div class="row">
             <div id="description" class="col-sm-12">
                 <div id="control" class="shadow p-3 m-1 rounded bg-dark">
-                    <p class="text-white">{{ message }}</p>
-                    <button v-on:click="message_next" 　id="button_next" type="button" class="btn btn-secondary w-100">Next</button>
+                    <p class="text-white" style="height:150px;white-space:pre-wrap; word-wrap:break-word;">{{ message[step] }}</p>
+                    <hr>
+                    <p class="text-white text-center" v-if='count_display'>{{count_text[count_arr[step]-1]}} {{count}} s</p>
+                    <hr>
+                    <button v-on:click="message_next" v-if='next_display' 　id="button_next" type="button" class="btn btn-secondary w-100">Next</button>
+                    <hr>
                 </div>
+                
             </div>
-            <div id="control" class="col-sm-12">
-                <div id="control" class="shadow p-3 m-1 rounded bg-dark">
+            <div id="main" class="col-sm-12">
+                <div id="main" class="shadow p-3 m-1 rounded bg-dark">
                     <div class="row">
-                        <div class="col-sm-12 text-white">
-                            <span id="time">
-          0
-        </span> s
+
+
+                        <div id="output-1" v-if='output-1_display' class="col-sm-12 col-md-4">
+                            <p class="text-white">human like sound</p><p><audio id="audio1" controls></audio></p>
+                            <hr>
                         </div>
-                        <div class="col-sm-6">
-                            <div style="height:50px;">
-                                <button　id="startstopButton" type="button" class="btn btn-secondary w-100">
-                                    beep
-                                    </button>
-                            </div>
+
+                        <div id="output-2" v-if='output-2_display' class="col-sm-12 col-md-4">
+                            <p class="text-white">friendly like sound</p><p><audio id="audio2" controls></audio></p>
+                            <hr>
                         </div>
-                        <div id="output" class="col-sm-6">
-                            <p><audio id="audio" controls></audio></p>
+                        <hr>
+                        <div id="output-3" v-if='output-3_display' class="col-sm-12 col-md-4">
+                            <p class="text-white">hostile like sound</p><p><audio id="audio3" controls></audio></p>
+                            <hr>
                         </div>
                     </div>
                 </div>
@@ -73,12 +75,84 @@
     let control = new Vue({
         el: '#control',
         data: {
-            message: 'Welcome! You will generate a 5-second auditory signal. It will be played to another participant, together with a computer-generated signal. Your job is to help the participant to judge which signal is from you (human). Now lets practice! '
+            step: 0,
+            message: ['Welcome! You will generate a 5-second auditory signal. It will be played to another participant, together with a computer-generated signal. Your job is to help the participant to judge which signal is from you (human).\n\n Now let\'s practice! \n',
+                'Now please make a 5-second human generated auditory signal.',
+                'Now please make a 5-second human generated auditory signal.',
+                'Now please make a 5-second human generated auditory signal.',
+                'Please make a "friendly" 5-second auditory signal.',
+                'Please make a "friendly" 5-second auditory signal.',
+                'Please make a "friendly" 5-second auditory signal.',
+                'Please make a "hostile" 5-second auditory signal.  ',
+                'Please make a "hostile" 5-second auditory signal.  ',
+                'Please make a "hostile" 5-second auditory signal.  ',
+                'Thank you! fill in your information',
+            ],
+            next_arr: [0,1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+            count_arr: [0, 0, 1, 2, 0, 1, 2, 0, 1, 2],
+            count: 5,
+            count_text: ['recording is start in ', 'press SPACE to beep! recording...'],
+            time_limitation:[5,5],
+            next_display: true,
+            record_num: 1,
+            count_display: false
         },
         methods: {
             message_next: function() {
-                this.message = this.message.split('').reverse().join('')
+                console.log("message",this.step);
+
+                this.step += 1;  
+                this.next_display = this.next_arr[this.step];
+
+                if(this.step ==1){
+                    resumeContext();
+                }
+
+                if (this.count_arr[this.step] > 0) {
+                    this.count_display = true;
+                    this.count = this.time_limitation[this.count_arr[this.step]-1];
+                    if(this.count_arr[this.step]==2){
+                        console.log("recording start");
+                        recordingStart();
+                    }
+                    this.count_next();
+                }
+                else{
+                    this.count_display = false;
+                }
+
+            },
+            count_next: function() {
+                console.log("count",this.step);
+                this.count -= 1;
+                if (this.count > 0) {
+                    setTimeout(this.count_next, 1000);
+                } else {
+                    if (this.step == 0) {
+                        this.count = 5;
+                        setTimeout(this.count_next, 1000);
+                    } else {
+                        if(this.count_arr[this.step]==2){
+                            console.log("recording stop");
+                        recordingStop(this.record_num);
+                        this.record_num += 1;
+                    }
+                        this.message_next();
+                    }
+                }
+
             }
+        }
+    })
+
+    let count = new Vue({
+        el: '#count',
+        data: {
+
+
+        },
+        methods: {
+
         }
     })
 </script>
