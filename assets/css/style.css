@@ -1,43 +1,49 @@
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700&subset=japanese");
-
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500&subset=japanese");
 .navbar-brand {
-  font-weight: 500;
-  font-size: 1.4em;
+    font-weight: 500;
+    font-size: 1.4em;
 }
 
+
 /* body要素 */
+
 body {
-  font-family: "Noto Sans JP", sans-serif !important;
-  font-size: 1em;
-  padding: 20px;
-  padding-top: 80px;
-  margin: 0;
+    font-family: "Noto Sans JP", sans-serif !important;
+    color: #1a1a1a;
+    font-size: 1em;
+    padding: 20px;
+    padding-top: 80px;
+    margin: 0;
 }
 
 .codingarea .form-control {
-  height: 200px;
+    height: 200px;
 }
 
-.bg-black {
-  background-color: #292b2c;
+h2 {
+    font-size: 1.4em;
 }
 
-#waterfall {}
-
-#waterfallGraph {
-  height: 400px;
-  width: 800px;
-
+.page {
+    position: relative;
+    min-height: 600px;
+    display: none;
 }
 
-.waveGraphWrapper {
-  position: relative;
-  margin: auto;
-  height: 150px;
+#page1 {
+    display: block;
 }
 
-.synthGraphWrapper {
-  position: relative;
-  margin: auto;
-  height: 300px;
+.button {
+    position: absolute;
+    bottom: 50px;
+    left: 40%;
+    right: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.countdown {
+    color: #525252;
+    font-size: 1.4em;
 }

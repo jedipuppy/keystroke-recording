@@ -6,7 +6,56 @@ let time_data = [
     [],
     []
 ];
-// ********* Init AudioContext and Oscillator Node
+
+current_page = 1;
+page_setting = {
+        1: {
+            'id': 'page1',
+            'recording': 0,
+            'file-viewer': 0,
+        },
+        2: {
+            'id': 'page2',
+            'recording': 0,
+            'file-viewer': 0,
+        },
+        3: {
+            'id': 'page3',
+            'recording': 1,
+            'file-viewer': 1,
+        },
+        4: {
+            'id': 'page4',
+            'recording': 0,
+            'file-viewer': 1,
+        },
+        5: {
+            'id': 'page5',
+            'recording': 0,
+            'file-viewer': 1,
+        },
+        6: {
+            'id': 'page5',
+            'recording': 2,
+            'file-viewer': 1,
+        },
+        7: {
+            'id': 'page5',
+            'recording': 3,
+            'file-viewer': 1,
+        },
+        8: {
+            'id': 'page5',
+            'recording': 4,
+            'file-viewer': 1,
+        },
+        9: {
+            'id': 'page5',
+            'recording': 0,
+            'file-viewer': 1,
+        },
+    }
+    // ********* Init AudioContext and Oscillator Node
 
 window.addEventListener('load', init, false);
 
@@ -16,7 +65,7 @@ function init() {
     console.log(ua.browser.name)
     let compatible_browser = ['Chrome', 'Chromium', 'Firefox'];
     if (!compatible_browser.includes(ua.browser.name)) {
-        document.getElementById('reg_form').innerHTML = 'Your browser is not supported. This web application supports the latest versions of the Chrome; Firefox.'
+        document.getElementById('page1').innerHTML = 'Your browser is not supported. This web application supports the latest versions of the Chrome; Firefox.'
     }
     try {
         window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -29,12 +78,12 @@ function init() {
     restartBeep(0);
     document.onkeydown = function(e) {
         console.log(oscillator, "stop");
-        if (!beep_flag && event.keyCode == 32) {
+        if (!beep_flag && event.keyCode == 90) {
             beep_flag = 1;
 
             restartBeep(300);
             console.log("up", context.currentTime);
-            document.body.style.backgroundColor = "#3a3c3d";
+            document.body.style.backgroundColor = "#cfcfcf";
         }
 
     };
@@ -42,7 +91,7 @@ function init() {
         oscillator.stop(context.currentTime);
         beep_flag = 0;
         console.log("down", context.currentTime);
-        document.body.style.backgroundColor = "#292b2c";
+        document.body.style.backgroundColor = "#ffffff";
 
         restartBeep(0);
     };
@@ -53,6 +102,32 @@ function resumeContext() {
         console.log('Playback resumed successfully');
     });
 }
+
+
+
+function preCount(page, num, count) {
+    count -= 1;
+    document.getElementById('countdown-' + page).innerHTML = '開始 ' + count + ' 秒前';
+    if (count >= 0) {
+        setTimeout(preCount, 1000, page, num, count);
+    } else {
+        recordingStart();
+        recordCount(page, num, 5);
+    }
+}
+
+function recordCount(page, num, count) {
+    count -= 1;
+    document.getElementById('countdown-' + page).innerHTML = '録音中。残り ' + count + ' 秒';
+    if (count >= 0) {
+        setTimeout(recordCount, 1000, page, num, count);
+    } else {
+        recordingStop(num);
+        pageTransition(1);
+    }
+}
+
+
 
 
 function recordingStart() {
@@ -140,18 +215,44 @@ function recordForm() {
         .catch(err => {
             alert(err);
         });
+    pageTransition(1);
 }
 
 function getNow() {
-    var now = new Date();
-    var year = now.getFullYear();
-    var mon = ("0" + (now.getMonth() + 1)).slice(-2);
-    var day = ("0" + now.getDate()).slice(-2);
-    var hour = ("0" + now.getHours()).slice(-2);
-    var min = ("0" + now.getMinutes()).slice(-2);
-    var sec = ("0" + now.getSeconds()).slice(-2);
+    let now = new Date();
+    let year = now.getFullYear();
+    let mon = ("0" + (now.getMonth() + 1)).slice(-2);
+    let day = ("0" + now.getDate()).slice(-2);
+    let hour = ("0" + now.getHours()).slice(-2);
+    let min = ("0" + now.getMinutes()).slice(-2);
+    let sec = ("0" + now.getSeconds()).slice(-2);
 
     //出力用
-    var s = String(year) + mon + day + '-' + hour + min + sec;
+    let s = String(year) + mon + day + '-' + hour + min + sec;
     return s;
+}
+
+function move(dir) {
+    console.log(page_setting[current_page]['recording']);
+    if (page_setting[current_page]['recording'] == 1) {
+        preCount(page_setting[current_page]['id'], page_setting[current_page]['recording'], 5);
+    } else {
+        pageTransition(dir);
+    }
+}
+
+
+function pageTransition(dir) {
+
+    document.getElementById(page_setting[current_page]['id']).style.display = 'none';
+    document.getElementById(page_setting[current_page + dir]['id']).style.display = 'block';
+
+    if (page_setting[current_page + dir]['file-viewer'] == 1) {
+        document.getElementById('file-viewer').style.display = 'block';
+    } else {
+        document.getElementById('file-viewer').style.display = 'none';
+    }
+
+
+    current_page += dir;
 }

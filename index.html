@@ -3,20 +3,20 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Keystroke Recording</title>
+    <title>Unknown Communication</title>
     <meta name="Description" content="" />
     <meta name="Keywords" content="" />
 
     <!--UA-parser-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/ua-parser-js@0/dist/ua-parser.min.js"></script>
     <script>
     </script>
-    <!--bootstrap-->
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen,print" href="./assets/css/style.css" />
 
-    <!--vue-->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!--Keystroke Recording-->
     <script type="text/javascript" src="./assets/js/keystroke-recording.js"></script>
@@ -25,90 +25,192 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
-<body class="bg-black">
+<body class="">
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">Keystroke Recording</a>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class="navbar-brand" href="#">Unknown Communication</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </nav>
     </header>
     <main role="main">
-        <div class="row" id="control">
-            <div id="reg_form" v-if="reg_form_display" class="shadow p-3 m-1 rounded bg-dark text-white">
+        <div id="control">
+            <div class="shadow p-3 m-5 rounded page text-center" id="page1">
 
+                <h2>実験参加の説明・同意</h2>
+                <hr>
+                <p>本実験・調査の実施責任者はXXXXXです。本実験への参加はあなたの自由意思によるものです。</p>
 
-                <div class="m-3">
-                    <p class="text-white">
-                        textarea for terms and conditions.textarea for terms and conditions.textarea for terms and conditions.textarea for terms and conditions.textarea for terms and conditions.textarea for terms and conditions.textarea for terms and conditions.textarea for
-                        terms and conditions.textarea for terms and conditions.textarea for terms and conditions.textarea for terms and conditions.textarea for terms and conditions.textarea for terms and conditions.textarea for terms and conditions.textarea
-                        for terms and conditions.textarea for terms and conditions.textarea for terms and conditions.
-                    </p>
+                <ul class="list-group">
+                    <li class="list-group-item">1. 本実験の目的
+                        <p class="text-secondary">XXXXについて調べることが本実験・調査の目的です。</p>
+                    </li>
+                    <li class="list-group-item">2. 本実験の手続き
+                        <p class="text-secondary">本実験に参加にした場合，あなたはキーボードを使っていくつかの音声パターンを記録します。この実験にかかる時間は約15〜20分です。</p>
+                    </li>
+                    <li class="list-group-item">3. 潜在的なリスク・苦痛など
+                        <p class="text-secondary">実験による多少の疲労は除き，潜在的なリスクや苦痛はありません。また，いつ，いかなる理由でも，自由に実験を中止していただけます（5.参加と中止もご参照ください）。</p>
+                    </li>
+                    <li class="list-group-item">4. 匿名性の確保
+                        <p class="text-secondary">本実験によって得られた情報は法律による開示請求を除き，匿名性が維持されます。参加者には参加者番号が付与された上で，データは統計的に解析され，学会や論文等での実験データ公表の際に個人と結びつけられることはありません。</p>
+                    </li>
+                </ul>
+                <hr>
+                <p>東北大学　実験太郎 email：taroujikken@tohoku.ac.jp, 電話 022-217-1234</p>
+                本実験・調査の実moveX-1Xです。本実験への参加はあなたの自由意思によるものです。
+                <hr>
+                <div class="align-text-bottom text-center">
+                    <button onclick="move(1)" type="button" class="btn btn-secondary">
+                    同意する
+                </button>
                 </div>
-
+            </div>
+            <div class="shadow p-3 m-5 rounded page" style="display:none" id="page2">
+                以下の内容について入力をお願いします。
                 <form>
                     <div class="form-group row">
                         <div class="col-6">
-                            <label for="age" class="text-white">Age</label>
+                            <label for="age" class="">年齢</label>
                             <select id="age" class="form-control">
-                                <option selected>
-                                    <10s</option> <option value="20">20s
-                                </option>
-                                <option value="30">30s</option>
-                                <option value="40">40s</option>
-                                <option value="50">50s</option>
-                                <option value="60">
-                                    <60s</option> </select> </div>
+                                    <option value="10">10代以下</option>
+                                    <option value="20" selected>20代</option>
+                                <option value="30">30代</option>
+                                <option value="40">40代</option>
+                                <option value="50">50代</option>
+                                <option value="60">60代以下</option>
+                             </select> </div>
                         <hr />
                         <div class="col-6">
-                            <label for="gender" class="text-white">Gender</label>
+                            <label for="gender" class="">性別</label>
                             <select id="gender" class="form-control">
-                                            <option value="male" selected>Male</option>
-                                            <option value="female">Female</option>
-                                            <option value="other">don’t want to say</option>
+                                            <option value="male" selected>男性</option>
+                                            <option value="female">女性</option>
+                                            <option value="other">非公開</option>
                                         </select>
                         </div>
                     </div>
                 </form>
-
-
                 <hr />
-                <button 　id="sendform_button" v-on:click="sendform" type="button" class="btn btn-secondary col-12">
-                    Agreement and Submit
+                <div class="button">
+                    <button id="sendform_button" onclick="recordForm()" type="button" class="btn btn-secondary">
+                    開始する
                 </button>
-            </div>
-            <div id="main" v-if="main_display" class="shadow p-3 m-1 rounded bg-dark col-12">
-                <p class="text-white" style="height: 150px; white-space: pre-wrap; word-wrap: break-word;">
-                    {{ message[step] }}
-                </p>
-                <hr />
-                <p class="text-white text-center" v-if="count_display">
-                    {{count_text[count_arr[step]-1]}} {{count}} s
-                </p>
-                <hr />
-                <button v-on:click="message_next" v-if="next_display" 　id="button_next" type="button" class="btn btn-secondary w-100">
-                    Next
-                </button>
-                <hr />
+                </div>
             </div>
 
-            <div id="record" v-if="record_display" class="shadow p-3 m-1 rounded bg-dark row col-12">
-                <div id="output-1" v-if="output_1_display" class="col-sm-12 col-md-4">
-                    <p class="text-white">human like sound</p>
+            <div class="shadow p-3 m-5 rounded page" id="page3">
+                <h2>練習の説明</h2>
+                <hr>
+                <p>まずは課題の練習をします。</p>
+                <p>スペースキーを押してみましょう。音が出ます。音が小さすぎたり大きすぎないよう音量を調節してください。</p>
+                <p>次に好きなように音を鳴らして、5秒間録音をしましょう。</p>
+                <hr>
+                <p class="text-centermovew-1n" id="countdown-page3">開始 5 秒前</p>
+                <hr>
+                <div class="button">
+                    <button onclick="move(1)" type="button" class="btn btn-secondary">
+                    録音開始
+                </button>
+                </div>
+            </div>
+            <div class="shadow p-3 m-5 rounded page" id="page4">
+                <h2>確認</h2>
+                <hr>
+                <p>もう一つだったらもう一度やってみる。</p>
+                <hr>
+                <div class="button">
+                    <button onclick="move(-1)" type="button" class="btn btn-secondary">
+                        もう一度録音してみる
+                    </button>
+                    <button onclick="move(1)" type="button" class="btn btn-secondary">
+                    次に進む
+                </button>
+                </div>
+            </div>
+            <div class="shadow p-3 m-5 rounded page" id="page5">
+                <h2>課題について</h2>
+                <hr>
+                <p>あなたはこの音を使って、どこか遠くの場所にいる正体不明の相手に何かメッセージを伝えなくてはいけません。</p>
+                <p>音を出したり出さなかったりして言葉の通じない相手にメッセージの内容を正しく伝えるのが課題です。メッセージの長さは5秒です。</p>
+                <div>
+                    <img src="assets/introduction.png" class="img-fluid">
+                </div>
+                <div class="button">
+                    <button onclick="move(1)" type="button" class="btn btn-secondary">
+                    次に進む
+                </button>
+                </div>
+            </div>
+
+            <div class="shadow p-3 m-5 rounded page" id="page6">
+                <h2>課題１</h2>
+                <hr>
+                <p>自分が相手に友好的であることを伝えるための信号を作ってください（記録時間5秒）</p>
+                <img src="assets/img/introduction2.png" class="img-fluid">
+                <div class="button">
+                    <button onclick="move(1)" type="button" class="btn btn-secondary">
+                    次に進む
+                </button>
+                </div>
+            </div>
+
+            <div class="shadow p-3 m-5 rounded page" id="page7">
+                <h2>課題２</h2>
+                <hr>
+                <p>次に、自分が相手に敵対的であることを伝えるための信号を作ってください（記録時間5秒）</p>
+                <img src="assets/img/introduction2.png" class="img-fluid">
+                <div class="button">
+                    <button onclick="move(1)" type="button" class="btn btn-secondary">
+                    次に進む
+                </button>
+                </div>
+            </div>
+
+            <div class="shadow p-3 m-5 rounded page" id="page8">
+                <h2>課題３</h2>
+                <hr>
+                <p>最後に、自分が人間であり、機械ではないことを相手に伝えるための信号を作ってください（記録時間5秒）</p>
+                <img src="assets/img/introduction4.png" class="img-fluid">
+                <div class="button">
+                    <button onclick="move(1)" type="button" class="btn btn-secondary">
+                    次に進む
+                </button>
+                </div>
+            </div>
+
+            <div class="shadow p-3 m-5 rounded page" id="page9">
+                <p>お疲れ様でした。</p>
+                <p>これで実験は終了です。</p>
+                <p>ブラウザウィンドウを閉じてください。</p>
+
+                <div class="button">
+                    <button onclick="move(1)" type="button" class="btn btn-secondary">
+                    次に進む
+                </button>
+                </div>
+            </div>
+
+            <div id="file-viewer" class="shadow p-3 m-5 rounded" style="display:none">
+                <div id="output-1 " class="col-sm-12 col-md-4 ">
+                    <p>テスト録音</p>
                     <p><audio id="audio1" controls></audio></p>
                     <hr />
                 </div>
 
-                <div id="output-2" v-if="output_2_display" class="col-sm-12 col-md-4">
-                    <p class="text-white">friendly like sound</p>
+                <div id="output-2 " class="col-sm-12 col-md-4 ">
+                    <p>友好的</p>
                     <p><audio id="audio2" controls></audio></p>
                     <hr />
                 </div>
                 <hr />
-                <div id="output-3" v-if="output_3_display" class="col-sm-12 col-md-4">
-                    <p class="text-white">hostile like sound</p>
+                <div id="output-3 " class="col-sm-12 col-md-4 ">
+                    <p>敵対的</p>
                     <p><audio id="audio3" controls></audio></p>
+                    <hr />
+                </div>
+                <div id="output-4 " class="col-sm-12 col-md-4 ">
+                    <p>人間的</p>
+                    <p><audio id="audio4" controls></audio></p>
                     <hr />
                 </div>
             </div>
@@ -116,100 +218,5 @@
         </div>
     </main>
 </body>
-<script>
-    let control = new Vue({
-        el: "#control",
-        data: {
-            step: 0,
-            message: [
-                "Welcome! You will generate a 5-second auditory signal. It will be played to another participant, together with a computer-generated signal. Your job is to help the participant to judge which signal is from you (human).\n\n Now let's practice! \n",
-                "Now please make a 5-second human generated auditory signal.",
-                "Now please make a 5-second human generated auditory signal.",
-                "Now please make a 5-second human generated auditory signal.",
-                'Please make a "friendly" 5-second auditory signal.',
-                'Please make a "friendly" 5-second auditory signal.',
-                'Please make a "friendly" 5-second auditory signal.',
-                'Please make a "hostile" 5-second auditory signal.  ',
-                'Please make a "hostile" 5-second auditory signal.  ',
-                'Please make a "hostile" 5-second auditory signal.  ',
-                "Thank you! fill in your information",
-            ],
-            next_arr: [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
-            count_arr: [0, 0, 1, 2, 0, 1, 2, 0, 1, 2],
-            count: 5,
-            count_text: [
-                "recording is start in ",
-                "press SPACE to beep! recording...",
-            ],
-            time_limitation: [5, 5],
-            next_display: true,
-            record_num: 1,
-            count_display: false,
-            reg_form_display: true,
-            main_display: false,
-            record_display: true,
-            output_1_display: true,
-            output_2_display: true,
-            output_3_display: true,
-        },
-        methods: {
-            sendform: function() {
-                console.log("program start");
-                this.reg_form_display = false;
-                this.main_display = true;
-                this.record_display = true;
-                recordForm();
-            },
-
-            message_next: function() {
-                console.log("message", this.step);
-
-                this.step += 1;
-                this.next_display = this.next_arr[this.step];
-
-                if (this.step == 1) {
-                    resumeContext();
-                }
-
-                if (this.count_arr[this.step] > 0) {
-                    this.count_display = true;
-                    this.count = this.time_limitation[this.count_arr[this.step] - 1];
-                    if (this.count_arr[this.step] == 2) {
-                        console.log("recording start");
-                        recordingStart();
-                    }
-                    this.count_next();
-                } else {
-                    this.count_display = false;
-                }
-            },
-            count_next: function() {
-                console.log("count", this.step);
-                this.count -= 1;
-                if (this.count > 0) {
-                    setTimeout(this.count_next, 1000);
-                } else {
-                    if (this.step == 0) {
-                        this.count = 5;
-                        setTimeout(this.count_next, 1000);
-                    } else {
-                        if (this.count_arr[this.step] == 2) {
-                            console.log("recording stop");
-                            recordingStop(this.record_num);
-                            this.record_num += 1;
-                        }
-                        this.message_next();
-                    }
-                }
-            },
-        },
-    });
-
-    let count = new Vue({
-        el: "#count",
-        data: {},
-        methods: {},
-    });
-</script>
 
 </html>
