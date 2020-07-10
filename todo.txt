@@ -1,7 +1,14 @@
 
 Todo
-- measurement time:
-- countdown before start 
-- practice:1 humanlike:1 friendly:1 hostile:1
 - recording again if thedy don't like it
-- description
+- Language 
+- Folder name
+- gathering IP →集めないことになった
+- questionnarire form to feedback about this application just after the trial
+- 年齢をぴったりにする
+- Male and Female and don’t want to say
+- 日本語と英語と中国語で書かれるようにする
+- オンラインでデータを確認できるようにする。
+
+- abortボタンを作って、押したらデータを破棄するようにする
+- 
