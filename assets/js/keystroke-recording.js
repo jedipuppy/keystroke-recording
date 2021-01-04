@@ -6,6 +6,7 @@ let time_data = [
     [],
     []
 ];
+COUNT_NUM = 10;
 
 current_page = 1;
 page_setting = {
@@ -112,7 +113,7 @@ function preCount(page, num, count) {
         setTimeout(preCount, 1000, page, num, count);
     } else {
         recordingStart();
-        recordCount(page, num, 5);
+        recordCount(page, num, COUNT_NUM);
     }
 }
 
@@ -205,6 +206,8 @@ function recordForm() {
                 "date": time_now,
                 "gender": document.getElementById('gender').value,
                 "age": document.getElementById('age').value,
+                "name": document.getElementById('name').value,
+                "email": document.getElementById('email').value,
             })
         })
         .then(response => {
@@ -237,7 +240,7 @@ function move(dir) {
     if (page_setting[current_page]['recording'] > 0) {
         console.log("button" + page_setting[current_page]['id'])
         document.getElementById("button-" + page_setting[current_page]['id']).style.display = 'none';
-        preCount(page_setting[current_page]['id'], page_setting[current_page]['recording'], 5);
+        preCount(page_setting[current_page]['id'], page_setting[current_page]['recording'], COUNT_NUM);
     } else {
         pageTransition(dir);
     }

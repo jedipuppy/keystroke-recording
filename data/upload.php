@@ -20,7 +20,7 @@ function console_log( $data ){
             echo 'フォルダの作成が失敗しました。';
           }
 
-          $formData = $data{"filename"}."\t".$data{"date"}."\t".$data{"gender"}."\t".$data{"age"}."\n";
+          $formData = $data{"filename"}."\t".$data{"date"}."\t".$data{"name"}."\t".$data{"email"}."\t".$data{"gender"}."\t".$data{"age"}."\n";
           file_put_contents("log.dat", $formData, FILE_APPEND | LOCK_EX);
       }
     else {
