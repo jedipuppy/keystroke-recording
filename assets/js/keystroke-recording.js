@@ -7,7 +7,7 @@ let time_data = [
     []
 ];
 COUNT_NUM = 10;
-
+PRE_COUNT_NUM = 5;
 current_page = 1;
 page_setting = {
         1: {
@@ -84,7 +84,7 @@ function init() {
 
             restartBeep(300);
             console.log("up", context.currentTime);
-            document.body.style.backgroundColor = "#cfcfcf";
+            //            document.getElementById("control").style.backgroundColor = "#cfcfcf";
         }
 
     };
@@ -92,7 +92,7 @@ function init() {
         oscillator.stop(context.currentTime);
         beep_flag = 0;
         console.log("down", context.currentTime);
-        document.body.style.backgroundColor = "#ffffff";
+        //       document.getElementById("control").style.backgroundColor = "#ffffff";
 
         restartBeep(0);
     };
@@ -113,7 +113,7 @@ function preCount(page, num, count) {
         setTimeout(preCount, 1000, page, num, count);
     } else {
         recordingStart();
-        recordCount(page, num, COUNT_NUM);
+        recordCount(page, num, PRE_COUNT_NUM);
     }
 }
 
