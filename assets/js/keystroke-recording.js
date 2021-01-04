@@ -35,22 +35,22 @@ page_setting = {
             'file-viewer': 1,
         },
         6: {
-            'id': 'page5',
+            'id': 'page6',
             'recording': 2,
             'file-viewer': 1,
         },
         7: {
-            'id': 'page5',
+            'id': 'page7',
             'recording': 3,
             'file-viewer': 1,
         },
         8: {
-            'id': 'page5',
+            'id': 'page8',
             'recording': 4,
             'file-viewer': 1,
         },
         9: {
-            'id': 'page5',
+            'id': 'page9',
             'recording': 0,
             'file-viewer': 1,
         },
@@ -180,7 +180,7 @@ function upload(Data, num) {
     formData.append('num', num);
     formData.append('filename', time_now);
     formData.append('blob', Data);
-    fetch(`https://kaduo.jp/keystroke-recording/data/upload.php`, {
+    fetch(`https://kaduo.jp/unknown-communication/data/upload.php`, {
             method: "POST",
             body: formData
         })
@@ -197,7 +197,7 @@ function upload(Data, num) {
 function recordForm() {
     time_now = getNow()
     console.log('save data', time_now, document.getElementById('gender').value, document.getElementById('age').value)
-    fetch(`https://kaduo.jp/keystroke-recording/data/upload.php`, {
+    fetch(`https://kaduo.jp/unknown-communication/data/upload.php`, {
             method: "POST",
             body: JSON.stringify({
                 "mode": "form",
@@ -233,8 +233,10 @@ function getNow() {
 }
 
 function move(dir) {
-    console.log(page_setting[current_page]['recording']);
-    if (page_setting[current_page]['recording'] == 1) {
+    console.log(page_setting[current_page]);
+    if (page_setting[current_page]['recording'] > 0) {
+        console.log("button" + page_setting[current_page]['id'])
+        document.getElementById("button-" + page_setting[current_page]['id']).style.display = 'none';
         preCount(page_setting[current_page]['id'], page_setting[current_page]['recording'], 5);
     } else {
         pageTransition(dir);

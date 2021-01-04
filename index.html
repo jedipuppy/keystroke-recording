@@ -59,7 +59,7 @@
                 <p>東北大学　実験太郎 email：taroujikken@tohoku.ac.jp, 電話 022-217-1234</p>
                 本実験・調査の実moveX-1Xです。本実験への参加はあなたの自由意思によるものです。
                 <hr>
-                <div class="align-text-bottom text-center">
+                <div class="text-center">
                     <button onclick="move(1)" type="button" class="btn btn-secondary">
                     同意する
                 </button>
@@ -91,7 +91,7 @@
                     </div>
                 </form>
                 <hr />
-                <div class="button">
+                <div class="text-center">
                     <button id="sendform_button" onclick="recordForm()" type="button" class="btn btn-secondary">
                     開始する
                 </button>
@@ -105,9 +105,9 @@
                 <p>スペースキーを押してみましょう。音が出ます。音が小さすぎたり大きすぎないよう音量を調節してください。</p>
                 <p>次に好きなように音を鳴らして、5秒間録音をしましょう。</p>
                 <hr>
-                <p class="text-centermovew-1n" id="countdown-page3">開始 5 秒前</p>
+                <p class="text-center" id="countdown-page3">開始 5 秒前</p>
                 <hr>
-                <div class="button">
+                <div class="text-center" id="button-page3">
                     <button onclick="move(1)" type="button" class="btn btn-secondary">
                     録音開始
                 </button>
@@ -118,7 +118,7 @@
                 <hr>
                 <p>もう一つだったらもう一度やってみる。</p>
                 <hr>
-                <div class="button">
+                <div class="text-center">
                     <button onclick="move(-1)" type="button" class="btn btn-secondary">
                         もう一度録音してみる
                     </button>
@@ -133,9 +133,9 @@
                 <p>あなたはこの音を使って、どこか遠くの場所にいる正体不明の相手に何かメッセージを伝えなくてはいけません。</p>
                 <p>音を出したり出さなかったりして言葉の通じない相手にメッセージの内容を正しく伝えるのが課題です。メッセージの長さは5秒です。</p>
                 <div>
-                    <img src="assets/introduction.png" class="img-fluid">
+                    <img src="assets/img/introduction1.png" class="img-fluid">
                 </div>
-                <div class="button">
+                <div class="text-center">
                     <button onclick="move(1)" type="button" class="btn btn-secondary">
                     次に進む
                 </button>
@@ -147,9 +147,12 @@
                 <hr>
                 <p>自分が相手に友好的であることを伝えるための信号を作ってください（記録時間5秒）</p>
                 <img src="assets/img/introduction2.png" class="img-fluid">
-                <div class="button">
+                <hr>
+                <p class="text-center" id="countdown-page6">開始 5 秒前</p>
+                <hr>
+                <div class="text-center" id="button-page6">
                     <button onclick="move(1)" type="button" class="btn btn-secondary">
-                    次に進む
+                    録音開始
                 </button>
                 </div>
             </div>
@@ -158,10 +161,13 @@
                 <h2>課題２</h2>
                 <hr>
                 <p>次に、自分が相手に敵対的であることを伝えるための信号を作ってください（記録時間5秒）</p>
-                <img src="assets/img/introduction2.png" class="img-fluid">
-                <div class="button">
+                <img src="assets/img/introduction3.png" class="img-fluid">
+                <hr>
+                <p class="text-center" id="countdown-page7">開始 5 秒前</p>
+                <hr>
+                <div class="text-center" id="button-page7">
                     <button onclick="move(1)" type="button" class="btn btn-secondary">
-                    次に進む
+                    録音開始
                 </button>
                 </div>
             </div>
@@ -171,9 +177,12 @@
                 <hr>
                 <p>最後に、自分が人間であり、機械ではないことを相手に伝えるための信号を作ってください（記録時間5秒）</p>
                 <img src="assets/img/introduction4.png" class="img-fluid">
-                <div class="button">
+                <hr>
+                <p class="text-center" id="countdown-page8">開始 5 秒前</p>
+                <hr>
+                <div class="text-center" id="button-page8">
                     <button onclick="move(1)" type="button" class="btn btn-secondary">
-                    次に進む
+                    録音開始
                 </button>
                 </div>
             </div>
@@ -183,7 +192,7 @@
                 <p>これで実験は終了です。</p>
                 <p>ブラウザウィンドウを閉じてください。</p>
 
-                <div class="button">
+                <div class="text-center">
                     <button onclick="move(1)" type="button" class="btn btn-secondary">
                     次に進む
                 </button>

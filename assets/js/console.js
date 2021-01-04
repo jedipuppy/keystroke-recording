@@ -3,7 +3,7 @@ function getCsvData(dataPath) {
     request.addEventListener('load', (event) => {
         response = event.target.responseText;
         lines = response.split('\n').map(l => l.split('\t'));
-        table = "<table class=\"table text-white\"><thead><tr><th>date</th><th>filename</th><th>gender</th><th>age</th><th>1</th><th>2</th><th>3</th></tr></thead>";
+        table = "<table class=\"table\"><thead><tr><th>date</th><th>filename</th><th>gender</th><th>age</th><th>1</th><th>2</th><th>3</th></tr></thead>";
         for (let i = 0; i < lines.length; i++) {
             if (lines[i].length <= 2) {
                 break;
