@@ -113,7 +113,7 @@ function preCount(page, num, count) {
         setTimeout(preCount, 1000, page, num, count);
     } else {
         recordingStart();
-        recordCount(page, num, PRE_COUNT_NUM);
+        recordCount(page, num, COUNT_NUM);
     }
 }
 
@@ -197,7 +197,7 @@ function upload(Data, num) {
 
 function recordForm() {
     time_now = getNow()
-    console.log('save data', time_now, document.getElementById('gender').value, document.getElementById('age').value)
+    console.log('save data', time_now, document.getElementById('gender').value, document.getElementById('age').value, document.getElementById('name').value, document.getElementById('email').value)
     fetch(`https://kaduo.jp/unknown-communication/data/upload.php`, {
             method: "POST",
             body: JSON.stringify({
@@ -240,7 +240,7 @@ function move(dir) {
     if (page_setting[current_page]['recording'] > 0) {
         console.log("button" + page_setting[current_page]['id'])
         document.getElementById("button-" + page_setting[current_page]['id']).style.display = 'none';
-        preCount(page_setting[current_page]['id'], page_setting[current_page]['recording'], COUNT_NUM);
+        preCount(page_setting[current_page]['id'], page_setting[current_page]['recording'], PRE_COUNT_NUM);
     } else {
         pageTransition(dir);
     }
